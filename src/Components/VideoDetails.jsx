@@ -63,7 +63,7 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
             }
             {
                 videoDetails.id &&
-                <div className="moreDetails" style={{ width: '90%', margin: 'auto', borderBottom: '3px solid gray' }}>
+                <div className="moreDetails">
                     <h5>{videoDetails?.title}</h5>
                     <p>
                         <Link to={`/channel/${videoDetails?.channelId}`} className="handleLongName">
@@ -82,9 +82,12 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
                                 formatedTime(videoDetails.lengthSeconds) || ''
                             }
                         </span>
-                        <button id="description-btn" onClick={() => { setShowDescription(!showDescription) }}>
-                            Description <span style={{ transform: showDescription ? 'rotate(180deg)' : '' }}>🔻</span>
-                        </button>
+                        {
+                            videoDetails.description &&
+                            <button id="description-btn" onClick={() => { setShowDescription(!showDescription) }}>
+                                Description <span style={{ transform: showDescription ? 'rotate(180deg)' : '' }}>🔻</span>
+                            </button>
+                        }
                     </p>
                     <pre className="description-box" style={{ display: showDescription ? 'block' : 'none' }}>
                         {videoDetails.description}

@@ -12,7 +12,7 @@ const History = () => {
             <button id="clear-btn" onClick={() => { localStorage.setItem('watchedVideos', null); setWatchedVideos([]) }}>Clear All <i className="fa-solid fa-trash"></i></button>
             <div className="videos">
                 {
-                    watchedVideos?.map((video, idx) => (
+                    watchedVideos?.reverse()?.map((video, idx) => (
                         <div className="video" key={idx}>
                             {video.type === "video" && <VideoCard video={video} />}
                             {video.type === "playlist" && <PlaylistCard playlist={video} />}

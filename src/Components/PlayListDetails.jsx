@@ -56,7 +56,7 @@ const PlayListDetails = ({ handleApiCall, handleScroll }) => {
                 <iframe width="560" height="315" src={`https://www.youtube.com/embed/${playlistVideos.data?.[curIdx]?.videoId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen>
                 </iframe>
             </div>
-            <div className="details moreDetails" style={{ width: '90%', margin: 'auto' }}>
+            <div className="details moreDetails">
                 <div className="author">
                     <Link to={`/channel/${playlistVideos.meta?.channelId}`}>
                         <img src={playlistVideos.meta.avatar?.[0].url || myImg} alt="author" />
@@ -72,16 +72,19 @@ const PlayListDetails = ({ handleApiCall, handleScroll }) => {
                     </p>
                     <p>
                         <span>{playlistVideos.data?.[curIdx].lengthText}</span>
-                        <button id="description-btn" onClick={() => { setShowDescription(!showDescription) }}>
-                            Description <span style={{ transform: showDescription ? 'rotate(180deg)' : '' }}>🔻</span>
-                        </button>
+                        {
+                            playlistVideos.meta?.description &&
+                            <button id="description-btn" onClick={() => { setShowDescription(!showDescription) }}>
+                                Description <span style={{ transform: showDescription ? 'rotate(180deg)' : '' }}>🔻</span>
+                            </button>
+                        }
                     </p>
                     <pre className="description-box" style={{ display: showDescription ? 'block' : 'none' }}>
                         {playlistVideos.meta?.description}
                     </pre>
                 </div>
             </div>
-            <div className="playlist-controls" style={{ width: '90%', margin: 'auto' }}>
+            <div className="playlist-controls">
                 <i
                     onClick={(curIdx === 0) ? () => { } : () => { setCurIdx(curIdx - 1) }}
                     style={{ opacity: (curIdx === 0) ? '0.2' : '1' }}

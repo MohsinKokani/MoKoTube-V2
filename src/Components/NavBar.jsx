@@ -63,9 +63,12 @@ const NavBar = () => {
         <>
             <div id="mySidenav" className="sidenav">
                 <i className="fa-solid fa-xmark" onClick={toggleSideNav} style={{ marginLeft: "1rem" }}></i>
-                <p onClick={() => { toggleSideNav(); window.history.go(-window.history.length + 1); }}>Reset Journey</p>
+                <p onClick={() => { toggleSideNav(); window.history.go(-window.history.length + 2); }}>Reset Journey</p>
                 <p onClick={() => { toggleMode(); toggleSideNav(); }}>{currentMode} Mode</p>
                 <p onClick={() => { navigate('/history'); toggleSideNav() }}>Recently Watched</p>
+                <p onClick={() => { window.location.href = 'https://mokotube.netlify.app/'; }}>
+                    <button className="special-btn">Try Version-1</button>
+                </p>
             </div>
             <div className="masterHead">
                 <i className="fa-solid fa-bars" onClick={toggleSideNav}></i>
