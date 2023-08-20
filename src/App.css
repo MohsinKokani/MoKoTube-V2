@@ -1,0 +1,691 @@
+:root {
+    --bgColor: #0f0f0f;
+    --fgColor: #f1f1f1;
+    --Color1: #949494;
+    --Color2: #0a81ffd8;
+    --Color3: #272727;
+
+    /* --bgColor: #f1f1f1;
+    --fgColor: #0f0f0f;
+    --Color1: #919191;
+    --Color2: #0a81ffd8;
+    --Color3: #dcdcdc; */
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bgColor);
+    color: var(--fgColor);
+}
+
+/* handle scroll styling */
+/* width */
+::-webkit-scrollbar {
+    height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--Color3);
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* main logo , search and user  */
+.masterHead {
+    width: 100%;
+    /* border: 1px solid red; */
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, var(--Color3), 95%, rgba(0, 0, 0, 0));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+    z-index: 8;
+}
+
+.masterHead i,
+.alertArea i,
+#mySidenav i {
+    font-size: 3.4rem;
+    padding-left: 1rem;
+    cursor: pointer;
+    color: var(--fgColor);
+}
+
+.mokoTubeIcon {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    width: fit-content;
+    color: var(--fgColor);
+}
+
+.mokoTubeIcon img,
+.masterHead img {
+    width: 3.5rem;
+    margin: 0 1rem;
+}
+
+.searchField {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+.searchField input {
+    width: 85%;
+    height: 3.2rem;
+    padding: 2.1rem 1.8rem;
+    color: var(--fgColor);
+    background: transparent;
+    border-top-left-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+    border: 1px solid var(--fgColor);
+    font-size: 2.2rem;
+    border-right: none;
+}
+
+.searchField input:focus {
+    border: none;
+    outline: 1px solid var(--Color2);
+}
+
+.searchField i {
+    border: 1px solid var(--fgColor);
+    color: var(--fgColor);
+    height: 3.2rem;
+    padding: 2.1rem 1.8rem;
+    width: 15%;
+    border-top-right-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+    font-size: 2.2rem;
+    background: var(--Color3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* side nav  */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: var(--Color3);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 1rem;
+}
+
+.sidenav p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: #818181;
+    cursor: pointer;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.sidenav p:hover {
+    color: var(--fgColor);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* navbar ends */
+
+/* :horizontal scroll */
+.train {
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    overflow-x: scroll;
+    transition: all 0.5ms ease;
+}
+
+.coach {
+    background: var(--Color3);
+    font-size: 2.2rem;
+    margin: 0.5rem;
+    color: var(--fgColor);
+    white-space: nowrap;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+/* main feeding videos section  */
+.videos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video {
+    width: 62rem;
+    margin: 2rem;
+}
+
+.channel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.channel img {
+    object-fit: cover;
+    width: 65%;
+    margin-bottom: 0.5rem;
+    border-radius: 50%;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 34.875rem;
+    position: relative;
+    z-index: 6;
+}
+
+.thumbnail img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.timeStamp {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    font-size: 2rem;
+    background: black;
+    padding: 0.3rem;
+}
+
+.overlay-playlist-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    width: 30%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.author img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin-right: 10px;
+}
+
+.details {
+    display: flex;
+    margin: 1rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.title h3 {
+    color: var(--fgColor);
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+    overflow-wrap: anywhere;
+}
+
+
+.title a b,
+span {
+    text-decoration: none;
+    color: var(--Color1);
+    font-size: 2rem;
+}
+
+.title a b {
+    overflow-wrap: anywhere;
+}
+
+.channelBanner {
+    width: 100%;
+    padding-top: 20%;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.channelDetailHeader {
+    width: 95%;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    min-width: auto;
+    border-bottom: 2px solid var(--Color3);
+}
+
+.channelDetailHeader .channelImage {
+    width: 18%;
+    padding-top: 18%;
+    border-radius: 50%;
+    /* border: 1px solid red; */
+    background-position: center;
+    background-size: cover;
+}
+
+.channelDetailHeader .moreDetails {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+}
+
+.moreDetails h5 {
+    font-size: 2rem;
+    margin: 0.5rem;
+    overflow-wrap: anywhere;
+}
+
+.moreDetails p {
+    font-size: 1.8rem;
+    margin: 0.5rem;
+    white-space: nowrap;
+    color: var(--Color1);
+}
+
+.moreDetails p>span {
+    background-color: var(--fgColor);
+    padding: 0.6rem;
+    color: var(--Color3);
+    display: inline-block;
+    margin: 0 0.5rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+}
+
+.handleLongName {
+    max-width: 20rem;
+    overflow: hidden;
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--fgColor);
+}
+
+.playlist-controls {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid gray;
+}
+
+#description-btn {
+    background-color: var(--fgColor);
+    color: var(--Color3);
+    display: inline-block;
+    margin: 0 0.5rem;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    user-select: none;
+}
+
+#description-btn>span {
+    display: inline-block;
+    padding: 0.1rem;
+    color: var(--Color3);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.description-box {
+    position: relative;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    white-space: pre-wrap;
+}
+
+/* chanelabout  */
+.channelAbout {
+    width: 95%;
+    position: relative;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.channelDescription h4 {
+    color: var(--fgColor);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.channelDescription {
+    width: 60%;
+    margin-top: 0.5rem;
+    color: var(--fgColor);
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+    border-bottom: var(--Color1);
+}
+
+.statistics h6,
+.statistics p {
+    color: var(--fgColor);
+    padding: 1rem;
+    font-size: 1.7rem;
+    border-bottom: 2px solid var(--Color3);
+    white-space: nowrap;
+}
+
+
+/* video details  */
+.container {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    padding-bottom: 50.25%;
+    height: 0;
+    /* border: 1px solid red; */
+    margin-bottom: 1rem;
+}
+
+.container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.moreDetails p i {
+    color: var(--fgColor);
+    font-size: 1.4rem;
+}
+
+/* alert section  */
+.alertArea {
+    margin: auto;
+    min-width: 60%;
+    /* height: 28rem; */
+    position: fixed;
+    z-index: 6;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 4/2;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid var(--Color1);
+    background-color: #ffb005;
+    box-shadow: 0.1rem 0.1rem 5px var(--fgColor);
+}
+
+.alertArea i {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+.alertArea h1 {
+    font-size: 8rem;
+    color: var(--fgColor);
+}
+
+.alertArea p {
+    color: var(--fgColor);
+    padding: 1rem;
+    font-size: 1.7rem;
+    border-bottom: 2px solid var(--Color3);
+}
+
+/* history page  */
+#clear-btn {
+    background-color: var(--Color3);
+    border: none;
+    color: var(--fgColor);
+    display: flex;
+    text-decoration: none;
+    font-size: 1.6rem;
+    width: 13rem;
+    cursor: pointer;
+    height: 5rem;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 3rem;
+}
+
+#clear-btn i {
+    font-size: 2rem;
+    color: var(--fgColor);
+}
+
+/* playlist videos  */
+.singlePlaylistVideo {
+    width: 90%;
+    padding: 1rem 0.5rem;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    background: var(--Color3);
+    border-radius: 10px;
+    border-top: 1px solid var(--fgColor);
+    border-left: 1px solid var(--fgColor);
+}
+
+.singlePlaylistVideo img {
+    width: 16rem;
+    height: 9rem;
+}
+
+.bottomLoader {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.bottomLoader img {
+    width: 10rem;
+}
+
+.sortBy-btn {
+    margin: 1rem;
+    font-size: 2rem;
+    display: inline-block;
+    padding: 0.7rem 0;
+    position: relative;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.options {
+    line-height: 2;
+    position: absolute;
+    top: 0;
+    z-index: 7;
+    background: var(--Color3);
+    transform-origin: top left;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.options>p {
+    padding: 0.4rem 2rem;
+    white-space: nowrap;
+}
+
+.options>p:hover {
+    background-color: var(--Color2);
+}
+
+.sortBy-btn:hover>.options {
+    transform: scale(1);
+}
+
+.filterContainer {
+    width: 80%;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    max-width: 800px;
+    background: var(--Color3);
+    z-index: 7;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 3rem;
+}
+
+.applyFilter-btn {
+    background-color: var(--Color2);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    color: var(--fgColor);
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.applyFilter-btn:hover,
+.applyFilter-btn:focus {
+    background-color: #07c;
+}
+
+.applyFilter-btn:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.applyFilter-btn:active {
+    background-color: #0064bd;
+    box-shadow: none;
+}
+
+.top_right {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 105%;
+    top: -1rem;
+    z-index: 7;
+    background-color: #000000e6;
+}
+
+@media screen and (min-width:980px) {
+    :root {
+        font-size: 55%;
+    }
+
+    .video {
+        width: 42rem;
+        margin: 2rem;
+    }
+
+    .thumbnail {
+        height: 23.625rem;
+    }
+}
+
+@media screen and (max-width:980px) {
+    :root {
+        font-size: 47%;
+    }
+
+    .video {
+        width: 42rem;
+        margin: 2rem;
+    }
+
+    .thumbnail {
+        height: 23.625rem;
+    }
+}
+
+@media screen and (max-width:580px) {
+    :root {
+        font-size: 40%;
+    }
+}
+
+@media screen and (max-width:420px) {
+    :root {
+        font-size: 38%;
+    }
+
+    .video {
+        width: 100%;
+        margin: 0;
+        display: table;
+        margin-bottom: 2rem;
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: 78.55%;
+        position: relative;
+        z-index: 6;
+    }
+}
+
+@media screen and (max-width:350px) {
+    :root {
+        font-size: 26%;
+    }
+}
