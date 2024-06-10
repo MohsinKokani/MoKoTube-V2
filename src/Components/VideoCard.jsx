@@ -15,11 +15,11 @@ const VideoCard = ({ video, hideAuthor }) => {
         else {
             watched = JSON.parse(localStorageVideos);
         }
-        let isUnique = true;
-        watched.forEach((element) => {
-            if (element.videoId === video.videoId) isUnique = false;
-        })
-        if (!isUnique) return;
+
+        let videoIndex = watched.findIndex(element => element.videoId === video.videoId);
+        if (videoIndex !== -1) 
+            watched.splice(videoIndex, 1);
+        
         watched.push(video);
         localStorage.setItem('watchedVideos', JSON.stringify(watched));
     }
