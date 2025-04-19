@@ -1,17 +1,24 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { ChannelDetais, VideoDetails, NavBar, HorizontalNav, History, ShowError, PlayListDetails, SearchFeed } from './Components';
+import { ChannelDetais, VideoDetails, NavBar, HorizontalNav, History, ShowError, PlayListDetails, SearchFeed, Login } from './Components';
 import FetchFromApi from './utils/FetchFromApi';
 
 const App = () => {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorStatus, setErrorStatus] = useState({
     present: false,
     code: 0,
     message: ""
   });
+  
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    if (loggedIn === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleApiError = (error) => {
     if (error?.code === "ERR_NETWORK") {
@@ -71,6 +78,10 @@ const App = () => {
       })
 
   };
+
+  if (!isLoggedIn) {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
+  }
 
   return (
     <>
