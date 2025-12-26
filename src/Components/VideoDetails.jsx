@@ -10,6 +10,12 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
     const [nextPageToken, setNextPageToken] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showDescription, setShowDescription] = useState(false);
+    
+    useEffect(() => {
+        // Scroll to top when video ID changes
+        window.scrollTo(0, 0);
+    }, [id]);
+
     useEffect(() => {
         setLoading(true)
         setRelatedvideos([]);

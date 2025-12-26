@@ -50,7 +50,7 @@ const VideoCard = ({ video, hideAuthor }) => {
                             {video.channelTitle}
                         </b>
                     </Link>
-                    <span>{parseInt(video.viewCount).toLocaleString()} views • {video.publishedTimeText || video.publishedText}</span>
+                    <span>{ video.viewCount ? parseInt(video.viewCount).toLocaleString() + " views" : video.viewCountText} • {video.publishedTimeText || video.publishedText}</span>
                 </div>
             </div>
         </>
