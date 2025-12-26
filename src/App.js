@@ -41,7 +41,7 @@ const App = () => {
       .then((data) => {
         if (data?.error) {
           setLoading(false);
-          setErrorStatus({ present: true, code: data.error.code, message: data.error.message });
+          setErrorStatus({ present: true, code: data.error.code || data.code , message: data.error.message || data.error });
           return;
         }
         setter(data);
@@ -59,7 +59,7 @@ const App = () => {
     FetchFromApi(url)
       .then((data) => {
         if (data?.error) {
-          setErrorStatus({ present: true, code: data.error.code, message: data.error.message });
+          setErrorStatus({ present: true, code: data.error.code || data.code , message: data.error.message || data.error });
           setLoading?.(false);
           LockReference.lock = 1;
           return;
