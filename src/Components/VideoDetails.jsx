@@ -74,7 +74,7 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
                     <p>
                         <Link to={`/channel/${videoDetails?.channelId}`} className="handleLongName">
                             {videoDetails?.channelTitle}
-                        </Link> •&nbsp;
+                        </Link> &nbsp;•&nbsp;
                         {parseInt(videoDetails?.viewCount).toLocaleString()} views •&nbsp;
                         {uploadedTime(videoDetails?.uploadDate)} ago &nbsp;&nbsp;&nbsp;
                     </p>
@@ -94,6 +94,27 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
                                 Description <span style={{ transform: showDescription ? 'rotate(180deg)' : '' }}>🔻</span>
                             </button>
                         }
+                        <a 
+                            href={`https://my-tube-download.netlify.app/?v=${videoDetails.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                textDecoration: 'none',
+                                padding: '0.4rem',
+                                backgroundColor: '#fc1503',
+                                color: 'white',
+                                borderRadius: '0.4rem',
+                                fontSize: '2rem',
+                                cursor: 'pointer',
+                                display: 'inline-block',
+                                margin: '0 0.5rem',
+                                userSelect: 'none',
+                                border: 'none',
+                                outline: 'none'
+                            }}
+                        >
+                            Download
+                        </a>
                     </p>
                     <pre className="description-box" style={{ display: showDescription ? 'block' : 'none' }}>
                         {videoDetails.description}
@@ -108,7 +129,7 @@ const VideoDetails = ({ handleApiCall, handleScroll }) => {
                 }
                 {
                     (!loading && relatedVideos.length === 0) &&
-                    <h2>No Videos Foun</h2>
+                    <h2>No Videos Found</h2>
                 }
             </div>
         </>

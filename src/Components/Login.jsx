@@ -18,7 +18,9 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
     const hash = await hashPassword(password);
     if (hash === storedHash) {
+      const loginTime = Date.now();
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('loginTime', loginTime.toString());
       setIsLoggedIn(true);
     } else {
       setError('Incorrect password');

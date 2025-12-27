@@ -15,8 +15,22 @@ const App = () => {
   
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
-    if (loggedIn === 'true') {
-      setIsLoggedIn(true);
+    const loginTime = localStorage.getItem('loginTime');
+    
+    if (loggedIn === 'true' && loginTime) {
+      const currentTime = Date.now();
+      const oneDayInMs = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      const timeSinceLogin = currentTime - parseInt(loginTime);
+      
+      if (timeSinceLogin < oneDayInMs) {
+        // Session is still valid
+        setIsLoggedIn(true);
+      } else {
+        // Session expired, clear login data
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('loginTime');
+        setIsLoggedIn(false);
+      }
     }
   }, []);
 
