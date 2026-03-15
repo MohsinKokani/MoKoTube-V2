@@ -8,7 +8,6 @@ export { default as NavBar } from "./NavBar";
 export { default as HorizontalNav } from "./HorizontalNav";
 export { default as ChannelCard } from "./ChannelCard";
 export { default as History } from "./History";
-export { default as ShowError } from "./ShowError";
 export { default as PlayListDetails } from "./PlayListDetails";
 export { default as ChannelAbout } from "./ChannelAbout";
 export { default as Login } from "./Login";

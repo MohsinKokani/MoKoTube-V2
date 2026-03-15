@@ -2,16 +2,14 @@
 import React, { useState,useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { ChannelDetais, VideoDetails, NavBar, HorizontalNav, History, ShowError, PlayListDetails, SearchFeed, Login } from './Components';
+import { ChannelDetais, VideoDetails, NavBar, HorizontalNav, History, PlayListDetails, SearchFeed, Login } from './Components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FetchFromApi from './utils/FetchFromApi';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [errorStatus, setErrorStatus] = useState({
-    present: false,
-    code: 0,
-    message: ""
-  });
+  
   
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
@@ -35,19 +33,22 @@ const App = () => {
   }, []);
 
   const handleApiError = (error) => {
+    let message = '';
     if (error?.code === "ERR_NETWORK") {
-      setErrorStatus({
-        present: true,
-        code: 0,
-        message: "Please connect to Internet"
-      })
+      message = "Please connect to Internet";
     } else {
-      setErrorStatus({
-        present: true,
-        code: error?.response.status,
-        message: error?.response.data.message
-      })
+      message = error?.response?.data?.message || error?.message || "Unknown error";
     }
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   }
 
   const handleApiCall = (url, setter, TokenSetter, setLoading) => {
@@ -55,7 +56,7 @@ const App = () => {
       .then((data) => {
         if (data?.error) {
           setLoading(false);
-          setErrorStatus({ present: true, code: data.error.code || data.code , message: data.error.message || data.error });
+          handleApiError(data.error);
           return;
         }
         setter(data);
@@ -73,7 +74,7 @@ const App = () => {
     FetchFromApi(url)
       .then((data) => {
         if (data?.error) {
-          setErrorStatus({ present: true, code: data.error.code || data.code , message: data.error.message || data.error });
+          handleApiError(data.error);
           setLoading?.(false);
           LockReference.lock = 1;
           return;
@@ -90,7 +91,6 @@ const App = () => {
         setLoading?.(false);
         if (LockReference !== undefined) LockReference.lock = 1;
       })
-
   };
 
   if (!isLoggedIn) {
@@ -99,7 +99,6 @@ const App = () => {
 
   return (
     <>
-
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -111,9 +110,18 @@ const App = () => {
           <Route path='/channel/:id' element={<ChannelDetais handleApiCall={handleApiCall} handleScroll={handleScroll} />} />
         </Routes>
       </BrowserRouter>
-      {
-        errorStatus.present && <ShowError errorStatus={errorStatus} setErrorStatus={setErrorStatus} />
-      }
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   )
 }
